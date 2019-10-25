@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css"/>
+
+</head>
+<body>
+
+<div class="container">
+    <form action="/action_page.php">
+        <div class="row">
+            <h2 style="text-align:center">Login with Social Media</h2>
+            <div class="vl">
+                <span class="vl-innertext">view</span>
+            </div>
+
+            <div class="col">
+                <a href="#" class="fb btn">
+                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                </a>
+                <a href="#" class="twitter btn">
+                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                </a>
+                <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                </i> Login with Google+
+                </a>
+            </div>
+
+            <div class="col">
+<!--                <img th:src="${user.imageUrl}" width="160" height="160"/>-->
+                <h2 th:text="${user.firstName+' '+user.lastName+' '+user.email}"></h2>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>
