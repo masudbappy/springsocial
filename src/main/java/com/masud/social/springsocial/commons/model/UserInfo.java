@@ -5,7 +5,7 @@ public class UserInfo {
     private String lastName;
     private String email;
 
-    public UserInfo() {
+    public UserInfo(String givenName, String familyName) {
     }
 
     public UserInfo(String firstName, String lastName, String email) {
