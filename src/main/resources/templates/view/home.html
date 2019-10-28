@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -9,21 +9,38 @@
 </head>
 <body>
 <div class="container">
-        <div class="row">
-            <h2 style="margin-left: 50px;">Login with Social Media</h2>
-
-            <div class="col">
-                <a th:href="@{'/facebookLogin'}" class="fb btn">
-                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                </a>
-                <a href="#" class="twitter btn">
-                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                </a>
-                <a th:href="@{/googleLogin}" class="google btn"><i class="fa fa-google fa-fw">
-                </i> Login with Google+
-                </a>
-            </div>
+    <div class="row">
+        <h2 style="text-align:center">Login with Social Media or Register Manually</h2>
+        <div class="vl">
+            <span class="vl-innertext">or</span>
         </div>
+
+        <div class="col">
+            <a th:href="@{'/facebookLogin'}" class="fb btn">
+                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            <a href="#" class="twitter btn">
+                <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+            </a>
+            <a th:href="@{/googleLogin}" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+            </a>
+        </div>
+        <div class="col">
+            <div class="hide-md-lg">
+                <p>Or sign Up manually:</p>
+            </div>
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <input type="text" name="firstName" placeholder="firstName" required="required"
+                       th:field="*{firstName}"/>
+                <input type="text" name="lastName" placeholder="lastName" required="required" th:field="*{lastName}"/>
+                <input type="text" name="email" placeholder="email" required="required" th:field="*{email}"/>
+                <input type="password" name="password" placeholder="Password" required="required"
+                       th:field="*{password}"/>
+                <input type="submit" value="Register"/>
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>

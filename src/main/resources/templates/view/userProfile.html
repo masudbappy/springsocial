@@ -4,38 +4,33 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css"/>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="/static/css/style.css"/>
 
 </head>
 <body>
 
-<div class="container">
-    <form action="/action_page.php">
-        <div class="row">
-            <h2 style="text-align:center">Login with Social Media</h2>
-            <div class="vl">
-                <span class="vl-innertext">view</span>
+<section class="flat-header color-bg adm-header">
+    <div class="wave-bg wave-bg2"></div>
+    <div class="container">
+        <div class="dashboard-warp fl-wrap">
+            <div class="dashboard-sidebar">
+                <div class="dashboard-sidebar-content fl-wrap" style="background: #184588">
+                    <div class="dashboard-avatar">
+                        <img src="/static/images/user.jpeg"/>
+                    </div>
+                    <div class="dashboard-sidebar-content fl-wrap">
+                        <h3>
+                            <span>Welcome</span>
+                        </h3>
+                        <h3 th:text="${user.firstName+' '+user.lastName}"></h3>
+                    </div>
+                    <a th:href="@{'/'}" class="log-out-btn color-bg" style="background: #3AACED">Log Out</a>
+                </div>
             </div>
-
-            <div class="col">
-                <a href="#" class="fb btn">
-                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                </a>
-                <a href="#" class="twitter btn">
-                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                </a>
-                <a th:href="@{/googleLogin}" class="google btn"><i class="fa fa-google fa-fw">
-                </i> Login with Google+
-                </a>
-            </div>
-
-            <div class="col">
-<!--                <img th:src="${user.imageUrl}" width="160" height="160"/>-->
-                <h2 th:text="${user.firstName+' '+user.lastName+' '+user.email}"></h2>
-            </div>
-
         </div>
-    </form>
-</div>
+    </div>
+</section>
+
+
 </body>
 </html>
