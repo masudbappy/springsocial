@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.api.impl.GoogleTemplate;
 import org.springframework.social.google.api.plus.Person;
-import org.springframework.social.google.api.userinfo.GoogleUserInfo;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class GoogleServiceImpl implements GoogleService {
     public String googleLogin() {
         OAuth2Parameters parameters = new OAuth2Parameters();
         parameters.setRedirectUri("http://localhost:8080/google");
-        parameters.setScope("profile");
+        parameters.setScope("https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me");
         return createGoogleConnection().getOAuthOperations().buildAuthenticateUrl(parameters);
 
     }
@@ -36,9 +35,9 @@ public class GoogleServiceImpl implements GoogleService {
     }
 
     @Override
-    public GoogleUserInfo getGoogleUserProfile(String accessToken) {
+    public Person getGoogleUserProfile(String accessToken) {
         Google google = new GoogleTemplate(accessToken);
-        GoogleUserInfo person = google.userOperations().getUserInfo();
+        Person person = google.plusOperations().getGoogleProfile();
         return person;
     }
 }
