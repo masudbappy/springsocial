@@ -34,7 +34,22 @@ public class SecurityConfiguaration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(HttpSecurity httpSecurity){
+    public void configure(HttpSecurity httpSecurity) throws Exception{
+        httpSecurity.authorizeRequests().antMatchers("/**").permitAll()
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .and().formLogin()
+                .loginPage("/")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/redirectdashboard")
+                .failureUrl("/loginfailure")
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/logoutsuccess")
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessdenied");
 
     }
 }

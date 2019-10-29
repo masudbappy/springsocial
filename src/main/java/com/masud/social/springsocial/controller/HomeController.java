@@ -11,6 +11,16 @@ public class HomeController {
     @GetMapping(value = "/")
     public String home(Model model){
         model.addAttribute("user", new UserInfo());
+        model.addAttribute("errormessage", "");
+
+        return "view/home";
+    }
+
+
+    @GetMapping(value = "/loginfailure")
+    public String loginfailure(Model model){
+        model.addAttribute("user", new UserInfo());
+        model.addAttribute("errormessage", "Please enter correct email & password");
         return "view/home";
     }
 }

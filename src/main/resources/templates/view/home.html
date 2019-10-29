@@ -10,9 +10,13 @@
 <body>
 <div class="container">
     <div class="row">
-        <h2 style="text-align:center">Login with Social Media or Register Manually</h2>
+        <h2 style="text-align:center">Login with Social Media or Login Manually or Register Manually</h2>
+        <h3 style="text-align:center; color: red" th:if="${errormessage}"><span th:text="${errormessage}"></span> </h3>
         <div class="vl">
             <span class="vl-innertext">or</span>
+        </div>
+        <div class="ul">
+            <span class="ul-innertext">or</span>
         </div>
 
         <div class="col">
@@ -26,6 +30,18 @@
             </i> Login with Google+
             </a>
         </div>
+
+        <div class="col">
+            <div class="hide-md-lg">
+                <p>Or sign In manually:</p>
+            </div>
+            <form th:action="@{/login}" method="post">
+                <input type="text" name="email" placeholder="email" required="required"/>
+                <input type="password" name="password" placeholder="Password" required="required"/>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
+
         <div class="col">
             <div class="hide-md-lg">
                 <p>Or sign Up manually:</p>

@@ -77,6 +77,6 @@ public class FacebookController {
         }
         System.out.println(name);
 
-        return "view/userProfile";
+        return "redirect:/redirectdashboard";
     }
 }
